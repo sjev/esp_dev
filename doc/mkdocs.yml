@@ -1,0 +1,6 @@
+site_name: Microcontroller notes
+
+theme: readthedocs
+
+markdown_extensions:
+    - admonition
