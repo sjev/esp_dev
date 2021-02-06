@@ -8,3 +8,4 @@ markdown_extensions:
 nav:
     - 'index.md'
     - 'nodemcu.md'
+    - 'experiments.md'
