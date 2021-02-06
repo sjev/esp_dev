@@ -14,3 +14,11 @@ see also [jangeox blog](http://www.jangeox.be/2013/10/stepper-motor-28byj-48_25.
 
   * only half stepping works
   * delays lower than 900us ar too short (motor does not move)
+
+## Load cell
+
+**Hardware** :  10 kg loadcell with [HX711](https://www.tinytronics.nl/shop/nl/sensoren/gewicht-druk-kracht/load-cell-versterker-hx711) amplifier.  The board was [patched](https://hackaday.io/project/1741-honeybee-hive-monitoring/log/9780-modifying-the-hx711-breakout-board-for-33v-operation) to work on 3.3V.
+
+**Code location**: `/esp/nodeMCU/load_cell.py`
+
+driver from [here](https://github.com/SergeyPiskunov/micropython-hx711)
