@@ -4,8 +4,9 @@ theme: readthedocs
 
 markdown_extensions:
     - admonition
+    - attr_list
 
 nav:
     - 'index.md'
-    - 'nodemcu.md'
+    - 'platforms.md'
     - 'experiments.md'
