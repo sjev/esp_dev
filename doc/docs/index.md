@@ -3,6 +3,12 @@
 After multiple projects on multiple platforms I tend to make a mess and forget what I was working on.
 This documentation is an attempt to write down some notes and avoid wasting time in the future.
 
+There are two ways of programming :
+
+1. Micropython
+2. ESPHome
+
+
 ## Directory structure
 
 ``` none
@@ -11,6 +17,8 @@ This documentation is an attempt to write down some notes and avoid wasting time
 ├── esp32 # esp 32 platform files
 │   ├── firmware  # micropython binaries and flashing tool
 │   └── nodeMCU # specific platform
+├── esp8266 # wemos and sonoff devices
+├── esphome # easy integration with HomeAssistant
 └── README.md
 ```
 
