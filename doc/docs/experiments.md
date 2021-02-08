@@ -22,3 +22,12 @@ see also [jangeox blog](http://www.jangeox.be/2013/10/stepper-motor-28byj-48_25.
 **Code location**: `/esp/nodeMCU/load_cell.py`
 
 driver from [here](https://github.com/SergeyPiskunov/micropython-hx711)
+
+### Load Cell - ESPHome
+
+Why write custom glue, when just the right code is already available!
+A version of scales measurement was built in `/esphome` folder.
+
+to run locally - `esphome scale.yaml run`
+
+added to home assistant by uploading the yaml file via file manager.
