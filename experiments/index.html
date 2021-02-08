@@ -52,7 +52,7 @@
                     </li>
                 </ul>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../nodemcu/">Nodemcu</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../platforms/">Platforms</a>
                     </li>
                 </ul>
                 <ul class="current">
@@ -61,6 +61,10 @@
     <li class="toctree-l2"><a class="reference internal" href="#stepper-motor">Stepper motor</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#load-cell">Load cell</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#load-cell-esphome">Load Cell - ESPHome</a>
+    </li>
+        </ul>
     </li>
     </ul>
                     </li>
@@ -112,6 +116,11 @@
 <p><strong>Hardware</strong> :  10 kg loadcell with <a href="https://www.tinytronics.nl/shop/nl/sensoren/gewicht-druk-kracht/load-cell-versterker-hx711">HX711</a> amplifier.  The board was <a href="https://hackaday.io/project/1741-honeybee-hive-monitoring/log/9780-modifying-the-hx711-breakout-board-for-33v-operation">patched</a> to work on 3.3V.</p>
 <p><strong>Code location</strong>: <code>/esp/nodeMCU/load_cell.py</code></p>
 <p>driver from <a href="https://github.com/SergeyPiskunov/micropython-hx711">here</a></p>
+<h3 id="load-cell-esphome">Load Cell - ESPHome</h3>
+<p>Why write custom glue, when just the right code is already available!
+A version of scales measurement was built in <code>/esphome</code> folder.</p>
+<p>to run locally - <code>esphome scale.yaml run</code></p>
+<p>added to home assistant by uploading the yaml file via file manager.</p>
               
             </div>
           </div>
@@ -120,7 +129,7 @@
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
       
-        <a href="../nodemcu/" class="btn btn-neutral" title="Nodemcu"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../platforms/" class="btn btn-neutral" title="Platforms"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -146,7 +155,7 @@
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../nodemcu/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../platforms/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
     </span>
