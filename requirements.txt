@@ -20,6 +20,8 @@ protobuf==3.13.0
 pyaes==1.6.1
 pycparser==2.20
 pyelftools==0.27
+PyQt5==5.15.2
+PyQt5-sip==12.8.1
 pyserial==3.5
 python-dotenv==0.15.0
 pytz==2020.5
@@ -29,6 +31,7 @@ requests==2.25.1
 semantic-version==2.8.5
 six==1.15.0
 tabulate==0.8.7
+tasmotizer==1.2.1
 tornado==6.1
 tzlocal==2.1
 urllib3==1.26.3
