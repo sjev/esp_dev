@@ -24,8 +24,8 @@ status_led:
 sensor:
   - platform: hx711
     name: "load_cell"
-    dout_pin: 16
-    clk_pin: 14
+    dout_pin: 14
+    clk_pin: 16
     gain: 128
     update_interval: 20s
     accuracy_decimals: 2
