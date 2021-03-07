@@ -1,5 +1,5 @@
 esphome:
-  name: vijver_boom 
+  name: terras_boom 
   platform: ESP8266
   board: esp01_1m 
 
