@@ -1,0 +1,17 @@
+{
+    "python.languageServer": "Pylance",
+    "python.autoComplete.extraPaths": [
+        "./src/lib",
+        "stubs/cpython_core",
+        "stubs/micropython-1_14-frozen/esp8266/GENERIC", 
+    ],
+    "python.linting.enabled": true,
+    "python.linting.pylintEnabled": true,
+    "python.jediEnabled": false,
+    "python.analysis.extraPaths": [
+        "./src/lib",
+        "stubs/cpython_core",
+        "stubs/micropython-1_14-frozen/esp8266/GENERIC"
+    ],
+    "python.pythonPath": "/home/jev/Development/esp_dev/venv/bin/python3",
+}
