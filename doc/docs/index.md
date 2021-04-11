@@ -37,7 +37,7 @@ A virtual environment should be used to separate tooling from the system python 
 3. Install required packages `pip instal -r requirements.txt`
 
 
-## Managing files
+## Development tools
 
 ### Ampy
 
@@ -45,3 +45,51 @@ Ampy from adafruit is a handy tool.
 
 !!! tip
     add `export AMPY_PORT="/dev/ttyUSB0"` to `.bashrc`  file, so you don't have to specify the port each time you run ampy
+
+
+## Visual studio code
+
+Can be used with *pymakr* extension.
+
+settings for VSC:
+
+```json
+{
+	"address": "/dev/ttyUSB0",
+	"username": "micro",
+	"password": "python",
+	"sync_folder": "",
+	"open_on_start": false,
+	"safe_boot_on_upload": false,
+	"py_ignore": [
+		"pymakr.conf",
+		".vscode",
+		".gitignore",
+		".git",
+		"project.pymakr",
+		"env",
+		"venv"
+	],
+	"fast_upload": false,
+	"sync_file_types": "py,txt,log,json,xml,html,js,css,mpy",
+	"ctrl_c_on_connect": false,
+	"sync_all_file_types": false,
+	"auto_connect": false,
+	"autoconnect_comport_manufacturers": [
+		"Pycom",
+		"Pycom Ltd.",
+		"FTDI",
+		"Microsoft",
+		"Microchip Technology, Inc.",
+		"QinHeng Electronics HL-340 USB-Serial adapter"
+	]
+}
+```
+
+!!! note
+    A correct manufacturer code needs to be added to `autoconnect_comport_manufacturers`. (use `lsusb`)
+
+
+### Setting up VS Code 
+
+see [using stubs](https://github.com/Josverl/micropython-stubs#using-the-stubs)
