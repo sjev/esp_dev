@@ -132,3 +132,4 @@ dmypy.json
 # Pyre type checker
 .pyre/
 esp8266/stubs
+esp8266/hello_world/secrets.py

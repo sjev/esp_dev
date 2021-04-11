@@ -3,6 +3,7 @@
     "python.autoComplete.extraPaths": [
         "./src/lib",
         "stubs/cpython_core",
+        "stubs/micropython-esp8266-1_11",
         "stubs/micropython-1_14-frozen/esp8266/GENERIC", 
     ],
     "python.linting.enabled": true,
@@ -11,6 +12,7 @@
     "python.analysis.extraPaths": [
         "./src/lib",
         "stubs/cpython_core",
+        "stubs/micropython-esp8266-1_11",
         "stubs/micropython-1_14-frozen/esp8266/GENERIC"
     ],
     "python.pythonPath": "/home/jev/Development/esp_dev/venv/bin/python3",
