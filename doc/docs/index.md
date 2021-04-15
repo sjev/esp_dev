@@ -13,7 +13,7 @@ There are two ways of programming :
 
 ``` none
 
-├── doc  # documentation  
+├── doc  # documentation
 ├── esp32 # esp 32 platform files
 │   ├── firmware  # micropython binaries and flashing tool
 │   └── nodeMCU # specific platform
@@ -45,6 +45,13 @@ Ampy from adafruit is a handy tool.
 
 !!! tip
     add `export AMPY_PORT="/dev/ttyUSB0"` to `.bashrc`  file, so you don't have to specify the port each time you run ampy
+
+
+### Rshell
+
+[Remote MicroPython shell](https://github.com/dhylands/rshell).
+
+This is a simple shell which runs on the host and uses MicroPython's raw-REPL to send python snippets to the pyboard in order to get filesystem information, and to copy files to and from MicroPython's filesystem.
 
 
 ## Visual studio code
@@ -90,6 +97,6 @@ settings for VSC:
     A correct manufacturer code needs to be added to `autoconnect_comport_manufacturers`. (use `lsusb`)
 
 
-### Setting up VS Code 
+### Setting up VS Code
 
 see [using stubs](https://github.com/Josverl/micropython-stubs#using-the-stubs)
