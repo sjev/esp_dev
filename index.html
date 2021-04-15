@@ -60,6 +60,8 @@
         <ul>
     <li class="toctree-l3"><a class="reference internal" href="#ampy">Ampy</a>
     </li>
+    <li class="toctree-l3"><a class="reference internal" href="#rshell">Rshell</a>
+    </li>
         </ul>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#visual-studio-code">Visual studio code</a>
@@ -121,7 +123,7 @@ This documentation is an attempt to write down some notes and avoid wasting time
 </ol>
 <h2 id="directory-structure">Directory structure</h2>
 <pre><code class="language-none">
-├── doc  # documentation  
+├── doc  # documentation
 ├── esp32 # esp 32 platform files
 │   ├── firmware  # micropython binaries and flashing tool
 │   └── nodeMCU # specific platform
@@ -146,6 +148,9 @@ This documentation is an attempt to write down some notes and avoid wasting time
 <p class="admonition-title">Tip</p>
 <p>add <code>export AMPY_PORT="/dev/ttyUSB0"</code> to <code>.bashrc</code>  file, so you don't have to specify the port each time you run ampy</p>
 </div>
+<h3 id="rshell">Rshell</h3>
+<p><a href="https://github.com/dhylands/rshell">Remote MicroPython shell</a>.</p>
+<p>This is a simple shell which runs on the host and uses MicroPython's raw-REPL to send python snippets to the pyboard in order to get filesystem information, and to copy files to and from MicroPython's filesystem.</p>
 <h2 id="visual-studio-code">Visual studio code</h2>
 <p>Can be used with <em>pymakr</em> extension.</p>
 <p>settings for VSC:</p>
@@ -239,5 +244,5 @@ This documentation is an attempt to write down some notes and avoid wasting time
 
 <!--
 MkDocs version : 1.1.2
-Build Date UTC : 2021-04-11 22:00:38.927738+00:00
+Build Date UTC : 2021-04-15 14:43:24.552376+00:00
 -->
