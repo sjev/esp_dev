@@ -1,0 +1,78 @@
+
+# chicken coop door. Based on 'cover' template of ESPHome.
+# see https://esphome.io/components/cover/template.html
+
+# connections
+# outputs = [('d1',5),('d2',4)]
+# inputs = [('d0',16),('d5',14)]
+
+# switches:
+
+# d0 - upper switch
+# d5 - lower switch
+# closed: both 0
+# open: d5=1, d0=1
+
+esphome:
+  name: coop_door
+  platform: ESP8266
+  board: d1_mini
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_pass
+
+binary_sensor:
+  - platform: gpio
+    pin: D0
+    name: upper_sensor
+    id: upper_sensor
+  - platform: gpio
+    pin: D5
+    name: lower_sensor
+    id: lower_sensor
+
+output:
+  - platform: gpio
+    pin: D1
+    id: gpio_d1
+  - platform: gpio
+    pin: D2
+    id: gpio_d2
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+
+ota:
+
+status_led:
+  pin:
+    number: 2
+    inverted: True
+
+
+#-----------main cover code---------------
+cover:
+  - platform: template
+    name: "kippenhok deur"
+    device_class: door
+    lambda: |-
+      switch (id(upper_sensor).state + id(lower_sensor).state) {
+        case 0: return COVER_CLOSED;
+        case 2: return COVER_OPEN;
+        case 1: return {};
+
+      }
+
+    open_action:
+      - output.turn_on: gpio_d1
+      - output.turn_off: gpio_d2
+    close_action:
+      - output.turn_off: gpio_d1
+      - output.turn_on: gpio_d2
+    stop_action:
+      - output.turn_off: gpio_d1
+      - output.turn_off: gpio_d2
