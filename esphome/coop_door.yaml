@@ -2,6 +2,9 @@
 # chicken coop door. Based on 'cover' template of ESPHome.
 # see https://esphome.io/components/cover/template.html
 
+# 'endstop cover' (https://esphome.io/components/cover/endstop.html?highlight=endstop%20cover)
+# is another candidate
+
 # connections
 # outputs = [('d1',5),('d2',4)]
 # inputs = [('d0',16),('d5',14)]
@@ -58,6 +61,7 @@ status_led:
 cover:
   - platform: template
     name: "kippenhok deur"
+    id: coop_door
     device_class: door
     lambda: |-
       switch (id(upper_sensor).state + id(lower_sensor).state) {
@@ -76,3 +80,6 @@ cover:
     stop_action:
       - output.turn_off: gpio_d1
       - output.turn_off: gpio_d2
+
+# stop cover on state change
+
