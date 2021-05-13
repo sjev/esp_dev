@@ -35,6 +35,35 @@ binary_sensor:
     name: lower_sensor
     id: lower_sensor
 
+    # virtual open endstop sensor, triggers when both sensors are high
+  - platform: template
+    name: "Door open endstop"
+    id: door_open_sensor
+    lambda: |-
+      if ((id(upper_sensor).state + id(lower_sensor).state) == 2){
+        return true;
+      } else {
+        return false;
+      }
+    on_press:
+      then:
+        - cover.stop: coop_door
+
+    # virtual closed endstop sensor, triggers when both sensors are low
+  - platform: template
+    name: "Door closed endstop"
+    id: door_closed_sensor
+    lambda: |-
+      if ((id(upper_sensor).state + id(lower_sensor).state) == 0){
+        return true;
+      } else {
+        return false;
+      }
+    on_press:
+      then:
+        - cover.stop: coop_door
+
+
 output:
   - platform: gpio
     pin: D1
@@ -63,23 +92,28 @@ cover:
     name: "kippenhok deur"
     id: coop_door
     device_class: door
+
     lambda: |-
       switch (id(upper_sensor).state + id(lower_sensor).state) {
         case 0: return COVER_CLOSED;
         case 2: return COVER_OPEN;
         case 1: return {};
-
       }
-
     open_action:
       - output.turn_on: gpio_d1
+      - output.turn_off: gpio_d2
+      - delay: 5s
+      - output.turn_off: gpio_d1
       - output.turn_off: gpio_d2
     close_action:
       - output.turn_off: gpio_d1
       - output.turn_on: gpio_d2
+      - delay: 5s
+      - output.turn_off: gpio_d1
+      - output.turn_off: gpio_d2
     stop_action:
       - output.turn_off: gpio_d1
       - output.turn_off: gpio_d2
 
-# stop cover on state change
+
 
