@@ -16,20 +16,65 @@
 # closed: both 0
 # open: d5=1, d0=1
 
+# DHT sensor
+# pin 13
+#
+# old python code:
+#
+# sensor = dht.DHT22(machine.Pin(pin))
+# sensor = Sensor(13)
+
 esphome:
   name: coop_door
   platform: ESP8266
-  board: d1_mini
+  board: d1_mini_pro
 
 wifi:
   ssid: !secret wifi_ssid
   password: !secret wifi_pass
 
+# sunrise automation
+sun:
+  latitude: !secret latitude
+  longitude: !secret longitude
+
+  on_sunrise:
+    - then:
+        - logger.log: "Sunrise! ...will open after 10 min"
+        - delay: 10min
+        - cover.open: coop_door
+  on_sunset:
+    - then:
+        - logger.log: "Sunset! ...will close after 30 min"
+        - delay: 30min
+        - cover.close: coop_door
+
+text_sensor:
+  - platform: sun
+    name: Next Sunrise
+    type: sunrise
+  - platform: sun
+    name: Next Sunset
+    type: sunset
+
+
+# needed for sun automation
+time:
+  - platform: homeassistant
+
 sensor:
   - platform: uptime
     name: "Uptime coop_door"
-
-# TODO: add RHT sensor
+  - platform: wifi_signal
+    name: "coop door wifi signal"
+    update_interval: 60s
+  - platform: dht
+    pin: GPIO13
+    temperature:
+      name: "Temperatuur Kippenhok"
+    humidity:
+      name: "Vochtigheid Kippenhok"
+    update_interval: 60s
 
 
 binary_sensor:
