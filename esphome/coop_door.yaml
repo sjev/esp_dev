@@ -25,6 +25,13 @@ wifi:
   ssid: !secret wifi_ssid
   password: !secret wifi_pass
 
+sensor:
+  - platform: uptime
+    name: "Uptime coop_door"
+
+# TODO: add RHT sensor
+
+
 binary_sensor:
   - platform: gpio
     pin: D0
