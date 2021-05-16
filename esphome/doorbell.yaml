@@ -1,0 +1,45 @@
+esphome:
+  name: doorbell
+  platform: ESP8266
+  board: d1_mini
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_pass
+
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+
+ota:
+
+output:
+  - platform: gpio
+    id: led
+    inverted: true
+    pin: GPIO2
+
+# Individual sensors
+sensor:
+  - platform: uptime
+    name: Uptime Sensor
+
+binary_sensor:
+  - platform: gpio
+    id: button
+    name: Doorbell Button
+    pin:
+      # Connected to D0 on wemos.
+      number: GPIO16
+
+    filters:
+      # Small filter, to debounce the button press.
+      - delayed_on: 25ms
+      - delayed_off: 200ms
+    on_press:
+      - output.turn_on: led
+    on_release:
+      - output.turn_off: led

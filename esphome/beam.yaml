@@ -1,0 +1,29 @@
+esphome:
+  name: beam
+  platform: ESP8266
+  board: d1_mini_pro
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_pass
+
+
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+
+ota:
+
+dallas:
+  - pin: GPIO2
+
+sensor:
+  - platform: wifi_signal
+    name: "WiFi Signal Sensor"
+    update_interval: 20s
+  - platform: dallas
+    index: 0
+    name: test_probe

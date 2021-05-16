@@ -16,10 +16,13 @@ api:
 ota:
 
 status_led:
-  pin: 
+  pin:
     number: 2
     inverted: True
 
+switch:
+  - platform: restart
+    name: "Scale restart"
 
 sensor:
   - platform: hx711
@@ -33,6 +36,7 @@ sensor:
       - calibrate_linear:
         - 180000 -> 0
         - 557700 -> 1.76
+      - offset: -0.71
     unit_of_measurement: kg
   - platform: wifi_signal
     name: "scale_node wifi signal"
