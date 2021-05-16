@@ -1,0 +1,62 @@
+# Sonoff POW R2 energy meter
+esphome:
+  name: sonoff_pow
+  platform: ESP8266
+  board: esp01_1m
+
+
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_pass
+
+# Enable logging
+logger:
+  baud_rate: 0
+
+uart:
+  rx_pin: RX
+  baud_rate: 4800
+
+# Enable Home Assistant API
+api:
+
+ota:
+
+# blue led
+status_led:
+  pin:
+    number: GPIO13
+    inverted: True
+
+binary_sensor:
+  # sonoff button
+  - platform: gpio
+    pin:
+      number: GPIO0
+      mode: INPUT_PULLUP
+      inverted: True
+    name: "Sonoff POW Button"
+    internal: true
+    on_press:
+      - switch.toggle: relay
+
+sensor:
+  - platform: cse7766
+    current:
+      name: "Sonoff Pow R2 Current"
+    voltage:
+      name: "Sonoff Pow R2 Voltage"
+    power:
+      name: "Sonoff Pow R2 Power"
+
+switch:
+  - platform: gpio
+    id: relay
+    pin: GPIO12
+    name: "Sonoff POW Relay"
+    restore_mode: ALWAYS_ON
+
+text_sensor:
+  - platform: version
+    name: "Sonoff POW ESPHome Version"
