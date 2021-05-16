@@ -53,6 +53,7 @@ sensor:
     power:
       name: "Sonoff Pow R2 Power"
       id: power
+    update_interval: 5s
   - platform: total_daily_energy
     name: "Sonoff POW R2 Total Daily Energy"
     power_id: power
