@@ -34,33 +34,33 @@ wifi:
   password: !secret wifi_pass
 
 # sunrise automation
-sun:
-  latitude: !secret latitude
-  longitude: !secret longitude
+# sun:
+#   latitude: !secret latitude
+#   longitude: !secret longitude
 
-  on_sunrise:
-    - then:
-        - logger.log: "Sunrise! ...will open after 10 min"
-        - delay: 10min
-        - cover.open: coop_door
-  on_sunset:
-    - then:
-        - logger.log: "Sunset! ...will close after 30 min"
-        - delay: 30min
-        - cover.close: coop_door
+#   on_sunrise:
+#     - then:
+#         - logger.log: "Sunrise! ...will open after 10 min"
+#         - delay: 10min
+#         - cover.open: coop_door
+#   on_sunset:
+#     - then:
+#         - logger.log: "Sunset! ...will close after 30 min"
+#         - delay: 30min
+#         - cover.close: coop_door
 
-text_sensor:
-  - platform: sun
-    name: Next Sunrise
-    type: sunrise
-  - platform: sun
-    name: Next Sunset
-    type: sunset
+# text_sensor:
+#   - platform: sun
+#     name: Next Sunrise
+#     type: sunrise
+#   - platform: sun
+#     name: Next Sunset
+#     type: sunset
 
 
-# needed for sun automation
-time:
-  - platform: homeassistant
+# # needed for sun automation
+# time:
+#   - platform: homeassistant
 
 sensor:
   - platform: uptime
@@ -144,17 +144,18 @@ cover:
     name: "kippenhok deur"
     id: coop_door
     device_class: door
+    #assumed_state: true
 
     lambda: |-
       switch (id(upper_sensor).state + id(lower_sensor).state) {
         case 0: return COVER_CLOSED;
         case 2: return COVER_OPEN;
-        case 1: return {};
+        case 1: return COVER_CLOSED;
       }
     open_action:
       - output.turn_on: gpio_d1
       - output.turn_off: gpio_d2
-      - delay: 5s
+      - delay: 8s
       - output.turn_off: gpio_d1
       - output.turn_off: gpio_d2
     close_action:
