@@ -134,3 +134,4 @@ dmypy.json
 .pyre/
 esp8266/stubs
 esp8266/hello_world/secrets.py
+esphome/ttgocam/partitions.csv
