@@ -62,6 +62,11 @@ wifi:
 # time:
 #   - platform: homeassistant
 
+# Example configuration entry
+switch:
+  - platform: restart
+    name: "Kippenhok Restart"
+
 sensor:
   - platform: uptime
     name: "Uptime coop_door"
