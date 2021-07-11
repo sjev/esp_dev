@@ -1,0 +1,39 @@
+#  working with sonoff sv
+
+esphome:
+  name: waterpomp
+  platform: ESP8266
+  board: esp8285
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_pass
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+
+ota:
+
+binary_sensor:
+  - platform: gpio
+    pin:
+      number: GPIO0
+      mode: INPUT_PULLUP
+      inverted: True
+    name: "Waterpomp button"
+    on_press:
+      - switch.toggle: relay
+
+status_led:
+  pin:
+    number: GPIO13
+    inverted: True
+
+switch:
+  - platform: gpio
+    name: "Water pomp"
+    pin: GPIO12
+    id: relay

@@ -1,3 +1,4 @@
+wheel
 adafruit-ampy==1.0.7
 bitstring==3.1.7
 bottle==0.12.19
