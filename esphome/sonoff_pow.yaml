@@ -68,4 +68,4 @@ switch:
     id: relay
     pin: GPIO12
     name: "Sonoff POW Relay"
-    restore_mode: ALWAYS_ON
+    #restore_mode: ALWAYS_ON
