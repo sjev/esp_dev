@@ -1,0 +1,46 @@
+esphome:
+  name: s26_stekker
+  platform: ESP8266
+  board: esp01_1m
+  esp8266_restore_from_flash: true
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_pass
+
+api:
+
+logger:
+
+ota:
+
+# Device Specific Config
+status_led:
+  pin:
+    number: GPIO13
+    inverted: true
+
+binary_sensor:
+  - platform: gpio
+    id: push_button
+    pin:
+      number: GPIO0
+      mode: INPUT_PULLUP
+      inverted: True
+    internal: true
+    on_press:
+      # Prevents unintended LED lit states.
+      if:
+        condition:
+          - switch.is_off: relay
+        then:
+          - switch.turn_on: relay
+        else:
+          - switch.turn_off: relay
+
+switch:
+  # The relay switches on the red side of the LED when active.
+  - platform: gpio
+    name: "S26 Relay"
+    pin: GPIO12
+    id: relay
