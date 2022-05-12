@@ -1,4 +1,3 @@
-
 # chicken coop door. Based on 'cover' template of ESPHome.
 # see https://esphome.io/components/cover/template.html
 
@@ -34,33 +33,53 @@ wifi:
   password: !secret wifi_pass
 
 # sunrise automation
-# sun:
-#   latitude: !secret latitude
-#   longitude: !secret longitude
+sun:
+  latitude: !secret latitude
+  longitude: !secret longitude
 
-#   on_sunrise:
-#     - then:
-#         - logger.log: "Sunrise! ...will open after 10 min"
-#         - delay: 10min
-#         - cover.open: coop_door
-#   on_sunset:
-#     - then:
-#         - logger.log: "Sunset! ...will close after 30 min"
-#         - delay: 30min
-#         - cover.close: coop_door
+  #   on_sunrise:
+  #     - then:
+  #         - logger.log: "Sunrise! ...will open after 10 min"
+  #         - delay: 10min
+  #         - cover.open: coop_door
+  on_sunset:
+    - then:
+        - logger.log: "Sunset! ...will close after 25 min"
+        - delay: 25min
+        - if:
+            condition:
+              binary_sensor.is_on: door_open_sensor
+            then:
+              - logger.log: "Closing door."
+              - cover.close: coop_door
+            else:
+              - logger.log: "Door is already closed."
 
-# text_sensor:
-#   - platform: sun
-#     name: Next Sunrise
-#     type: sunrise
-#   - platform: sun
-#     name: Next Sunset
-#     type: sunset
+text_sensor:
+  - platform: sun
+    name: Next Sunrise
+    type: sunrise
+  - platform: sun
+    name: Next Sunset
+    type: sunset
 
-
-# # needed for sun automation
-# time:
-#   - platform: homeassistant
+# needed for sun automation
+time:
+  - platform: homeassistant
+    on_time:
+      - hours: 7
+        minutes: 30
+        seconds: 0
+        then:
+          - logger.log: "Preparing to open."
+          - if:
+              condition:
+                binary_sensor.is_off: door_open_sensor
+              then:
+                - logger.log: "Opening"
+                - cover.open: coop_door
+              else:
+                - logger.log: "Already open."
 
 # Example configuration entry
 switch:
@@ -80,7 +99,6 @@ sensor:
     humidity:
       name: "Vochtigheid Kippenhok"
     update_interval: 60s
-
 
 binary_sensor:
   - platform: gpio
@@ -120,7 +138,6 @@ binary_sensor:
       then:
         - cover.stop: coop_door
 
-
 output:
   - platform: gpio
     pin: D1
@@ -141,7 +158,6 @@ status_led:
   pin:
     number: 2
     inverted: True
-
 
 #-----------main cover code---------------
 cover:
@@ -172,6 +188,3 @@ cover:
     stop_action:
       - output.turn_off: gpio_d1
       - output.turn_off: gpio_d2
-
-
-
