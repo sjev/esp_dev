@@ -27,3 +27,11 @@ switch:
     pin: GPIO12
     id: relay
 
+dallas:
+  - pin: GPIO9
+  
+sensor:
+  - platform: dallas
+    address: 0x380217C14035FF28
+    name: "VijverT"
+
