@@ -26,12 +26,16 @@ switch:
     name: "Sonoff Basic Relay"
     pin: GPIO12
     id: relay
+  - platform: restart
+    name: "vijver boom restart"
+
 
 dallas:
   - pin: GPIO9
   
 sensor:
   - platform: dallas
-    address: 0x380217C14035FF28
+    address: 0x0C0000001036A228
     name: "VijverT"
 
+  
