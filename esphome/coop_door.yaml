@@ -74,7 +74,9 @@ time:
           - logger.log: "Preparing to open."
           - if:
               condition:
-                binary_sensor.is_off: door_open_sensor
+                and:
+                  - binary_sensor.is_off: door_open_sensor
+                  - switch.is_on: enable_open
               then:
                 - logger.log: "Opening"
                 - cover.open: coop_door
@@ -85,6 +87,10 @@ time:
 switch:
   - platform: restart
     name: "Kippenhok Restart"
+  - platform: template
+    name: "AutoOpen"
+    id: enable_open
+    optimistic: true
 
 sensor:
   - platform: uptime
