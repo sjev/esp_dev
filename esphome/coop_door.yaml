@@ -66,6 +66,7 @@ text_sensor:
 # needed for sun automation
 time:
   - platform: homeassistant
+    timezone: Europe/Amsterdam
     on_time:
       - hours: 7
         minutes: 30
