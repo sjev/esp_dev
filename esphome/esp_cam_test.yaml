@@ -30,7 +30,6 @@ binary_sensor:
   - platform: gpio
     pin:
       number: GPIO34
-      mode: INPUT_PULLUP
       inverted: True
     name: $friendly_name Button
 
@@ -53,7 +52,7 @@ esp32_camera:
 
   # Image settings
   name: $friendly_name
-  resolution: 1024x768
+  resolution: 640x480
   jpeg_quality: 10
   vertical_flip: true
   horizontal_mirror: true
