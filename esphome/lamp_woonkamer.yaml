@@ -1,0 +1,53 @@
+esphome:
+  name: lamp_woonkamer 
+  platform: ESP8266
+  board: esp01_1m 
+  esp8266_restore_from_flash: true
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_pass
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+
+ota:
+
+binary_sensor:
+  - platform: gpio
+    pin:
+      number: GPIO0
+      mode:
+        input: true
+        pullup: true
+      inverted: true
+    name: "Sonoff Basic Button"
+    on_press:
+      - switch.toggle: lamp_woonkamer
+
+status_led:
+  pin: 
+    number: GPIO13
+    inverted: True
+
+switch:
+  - platform: gpio
+    name: "Lamp Woonkamer"
+    pin: GPIO12
+    id: lamp_woonkamer
+  - platform: restart
+    name: "restart"
+
+
+dallas:
+  - pin: GPIO14
+  
+sensor:
+  - platform: dallas
+    index: 0
+    name: "T_Woonkamer"
+
+  

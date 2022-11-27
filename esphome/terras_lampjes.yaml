@@ -1,0 +1,29 @@
+esphome:
+  name: terras_lampjes
+  platform: ESP8266
+  board: esp01_1m 
+  esp8266_restore_from_flash: true
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_pass
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+
+ota:
+
+status_led:
+  pin: 
+    number: GPIO13
+    inverted: True
+
+switch:
+  - platform: gpio
+    name: "Terras lampjes"
+    pin: GPIO12
+    id: relay
+
