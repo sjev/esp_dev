@@ -1,0 +1,30 @@
+esphome:
+  name: mole-temperature-01
+  platform: ESP8266
+  board: d1_mini
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_pass
+
+api:
+
+logger:
+
+ota:
+
+# status_led:
+#   pin:
+#     number: GPIO13
+#     inverted: true
+
+
+
+dallas:
+  - pin: D4
+    update_interval: 5s
+
+sensor:
+  - platform: dallas
+    index: 0
+    name: "Mole_trap_01"
