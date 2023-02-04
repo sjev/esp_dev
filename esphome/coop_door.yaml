@@ -37,11 +37,11 @@ sun:
   latitude: !secret latitude
   longitude: !secret longitude
 
-  #   on_sunrise:
-  #     - then:
-  #         - logger.log: "Sunrise! ...will open after 10 min"
-  #         - delay: 10min
-  #         - cover.open: coop_door
+  on_sunrise:
+    - then:
+        - logger.log: "Sunrise! ...will open after 10 min"
+        - delay: 10min
+        - cover.open: coop_door
   on_sunset:
     - then:
         - logger.log: "Sunset! ...will close after 25 min"
