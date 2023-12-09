@@ -39,8 +39,8 @@ sun:
 
   on_sunrise:
     - then:
-        - logger.log: "Sunrise! ...will open after 10 min"
-        - delay: 10min
+        - logger.log: "Sunrise! ...will open after 30 min"
+        - delay: 30min
         - cover.open: coop_door
   on_sunset:
     - then:
@@ -63,35 +63,35 @@ text_sensor:
     name: Next Sunset
     type: sunset
 
-# needed for sun automation
+#needed for sun automation
 time:
   - platform: homeassistant
     timezone: Europe/Amsterdam
-    on_time:
-      - hours: 7
-        minutes: 30
-        seconds: 0
-        then:
-          - logger.log: "Preparing to open."
-          - if:
-              condition:
-                and:
-                  - binary_sensor.is_off: door_open_sensor
-                  - switch.is_on: enable_open
-              then:
-                - logger.log: "Opening"
-                - cover.open: coop_door
-              else:
-                - logger.log: "Already open."
+#     on_time:
+#       - hours: 7
+#         minutes: 15
+#         seconds: 0
+#         then:
+#           - logger.log: "Preparing to open."
+#           - if:
+#               condition:
+#                 and:
+#                   - binary_sensor.is_off: door_open_sensor
+#                 #  - switch.is_on: enable_open
+#               then:
+#                 - logger.log: "Opening"
+#                 - cover.open: coop_door
+#               else:
+#                 - logger.log: "Already open."
 
 # Example configuration entry
 switch:
   - platform: restart
     name: "Kippenhok Restart"
-  - platform: template
-    name: "AutoOpen"
-    id: enable_open
-    optimistic: true
+  # - platform: template
+  #   name: "AutoOpen"
+  #   id: enable_open
+  #   optimistic: true
 
 sensor:
   - platform: uptime

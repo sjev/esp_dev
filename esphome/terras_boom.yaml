@@ -23,7 +23,7 @@ status_led:
 
 switch:
   - platform: gpio
-    name: "Sonoff Basic Relay"
+    name: "Terras boom"
     pin: GPIO12
     id: relay
 
